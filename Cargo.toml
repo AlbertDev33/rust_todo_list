@@ -1,0 +1,12 @@
+[package]
+name = "todo_list"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-rt = "1.0.0"
+actix-web = "4.0.0"
+color-eyre = "0.3"
+serde = { version = "1.0.104", features = ["derive"] }
