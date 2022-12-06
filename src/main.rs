@@ -1,21 +1,16 @@
 mod config;
 mod models;
+mod handlers;
 
-use actix_web::{web, App, HttpResponse, HttpServer, Responder};
+use actix_web::{web, App, HttpServer};
 use color_eyre::Result;
 use dotenv::dotenv;
 use tokio_postgres::NoTls;
 
 use crate::config::{Config, ConfigFromEnv};
-use crate::models::Status;
+use crate::handlers::*;
 
 const HOST_PATH: &'static str = "127.0.0.1:3333";
-
-async fn status() -> impl Responder {
-    HttpResponse::Ok().json(Status {
-        status: "Ok".to_string(),
-    })
-}
 
 #[actix_web::main]
 async fn main() -> Result<()> {
