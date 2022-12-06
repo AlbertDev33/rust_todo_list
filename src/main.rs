@@ -1,6 +1,7 @@
 mod config;
 mod models;
 mod handlers;
+mod db;
 
 use actix_web::{web, App, HttpServer};
 use color_eyre::Result;
@@ -12,7 +13,7 @@ use crate::handlers::*;
 
 const HOST_PATH: &'static str = "127.0.0.1:3333";
 
-#[actix_web::main]
+#[actix_rt::main]
 async fn main() -> Result<()> {
     dotenv().ok();
 
@@ -22,8 +23,9 @@ async fn main() -> Result<()> {
 
     HttpServer::new(move || {
         App::new()
-            .app_data(pool.clone())
+            .data(pool.clone())
             .route("/", web::get().to(status))
+            .route("/todos", web::get().to(get_todos))
     })
     .bind(HOST_PATH)?
     .run()
