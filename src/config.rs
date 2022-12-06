@@ -6,6 +6,7 @@ use serde::Deserialize;
 pub struct Config {
     pub host: String,
     pub port: i32,
+    pub pg: deadpool_postgres::Config,
 }
 
 pub trait ConfigFromEnv {
