@@ -1,4 +1,3 @@
-use actix_web::dev::Path;
 use deadpool_postgres::Client;
 use std::io::{Error, ErrorKind};
 use tokio_pg_mapper::FromTokioPostgresRow;
